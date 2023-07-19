@@ -1,4 +1,6 @@
-﻿namespace Collections;
+﻿using Collections.Views;
+
+namespace Collections;
 
 public partial class App : Application
 {
@@ -6,7 +8,7 @@ public partial class App : Application
 	{
 		InitializeComponent();
 
-		MainPage = new AppShell();
+        MainPage = new NavigationPage(new ExamplesPage());
 	}
 }
 

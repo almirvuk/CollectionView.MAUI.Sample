@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Collections.Views.HorizontalGridPage"
+             Title="HorizontalGridPage">
+
+    <ContentPage.Content>
+        <StackLayout>
+
+            <StackLayout Orientation="Horizontal">
+
+                <Label Text="Art of the day" 
+                       Margin="8,8,8,0" 
+                       FontSize="Medium" 
+                       TextColor="Crimson" 
+                       FontAttributes="Bold"/>
+
+                <Label HorizontalOptions="EndAndExpand"
+                       Text="See All" 
+                       FontAttributes="Bold" 
+                       Margin="0,8,8,0" 
+                       FontSize="Medium" 
+                       TextColor="Black"/>
+
+            </StackLayout>
+
+            <CollectionView ItemsSource="{Binding Pictures}">
+
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Horizontal" Span="4"/>
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+
+                        <Grid Margin="6" >
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="2*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Image Source="{Binding ImageUrl}"
+                                   VerticalOptions="Start"
+                                   HorizontalOptions="Start"
+                                   Aspect="AspectFill"
+                                   WidthRequest="100"
+                                   Margin="8"
+                                   HeightRequest="150" />
+
+                            <StackLayout WidthRequest="200"
+                                         Margin="8"
+                                         VerticalOptions="Start"
+                                         Grid.Column="1"
+                                         Orientation="Vertical">
+
+                                <Label VerticalOptions="Center"
+                                       Text="{Binding Name}"
+                                       FontAttributes="Bold" />
+
+                                <Label Text="{Binding ShortDescription}"
+                                       MaxLines="4"
+                                       VerticalOptions="Start"
+                                       FontAttributes="Italic" />
+                            </StackLayout>
+
+                        </Grid>
+
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
